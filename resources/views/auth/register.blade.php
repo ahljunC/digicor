@@ -26,6 +26,48 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="company-name" class="col-md-4 col-form-label text-md-right">{{ __('Company Name') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="company-name" type="text" class="form-control @error('company-name') is-invalid @enderror" name="company_name" value="{{ old('company_name') }}" required autocomplete="company-name" autofocus>
+
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="company-address" class="col-md-4 col-form-label text-md-right">{{ __('Company Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="company-address" type="text" class="form-control @error('company-address') is-invalid @enderror" name="company_address" value="{{ old('company_address') }}" required autocomplete="company-address" autofocus>
+
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="region" class="col-md-4 col-form-label text-md-right">{{ __('Region Code') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="region" type="region" class="form-control @error('region') is-invalid @enderror" name="region" value="{{ old('region') }}" required autocomplete="region">
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
