@@ -38,14 +38,16 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('cart.index') }}">
-                                Cart
-                                <div class="badge">
-                                    {{ Cart::session(auth()->id())->getTotalQuantity() }}
-                                </div>
-                            </a>
-                        </li>
+                        @auth
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('cart.index') }}">
+                                    Cart
+                                    <div class="badge badge-danger">
+                                            {{ Cart::session(auth()->id())->getTotalQuantity() }}
+                                    </div>
+                                </a>
+                            </li>
+                        @endauth
                 
                         <!-- Authentication Links -->
                         @guest
@@ -71,7 +73,7 @@
                                         My Profile
                                     </a>
                                     
-                                    <a class="dropdown-item" href="{{ route('admin') }}">
+                                    <a class="dropdown-item" href="{{ route('admin.showProducts') }}">
                                         Admin Control Panel
                                     </a>
 

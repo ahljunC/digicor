@@ -10,9 +10,10 @@
                     <img class="card-img-top" src="default_product.jpg" alt="Card image cap">
                     <div class="card-body">
                         <a href="{{ route('product.index', $product->id) }}">
-                            <h4 class="card-title">{{$product->name}}</h4>
+                            <h4 class="card-title">{{ $product->name }}</h4>
                         </a>
-                        <p class="card-text">{{$product->description}}</p>
+                        <p class="card-text">{{ $product->description }}</p>
+                        <h4>{{ "$$product->price" }}</h4>
                     </div>
                     <div class="card-body">
                         <a href="{{ route('cart.add', $product->id) }}" class="card-link">Add to cart</a>
