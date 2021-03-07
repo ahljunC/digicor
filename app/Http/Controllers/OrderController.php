@@ -24,7 +24,7 @@ class OrderController extends Controller
             'shipping_phone' => 'required',
             'shipping_zipcode' => 'required',
         ]);
-
+        
         $order = new Order();
         
         $order->order_number = uniqid('OrderNumber-');
@@ -41,10 +41,17 @@ class OrderController extends Controller
         $order->total = \Cart::session(auth()->id())->getTotal();
         
         $order->status = 'pending';
+        
         $order->save();
+
+        $cartProducts = \cart::session(auth()->id())->getContent();
+        
+        foreach ($cartProducts as $product) {
+            $order->products()->attach($product->id, ['price' => $product->price, 'quantity' => $product->quantity]);
+        }
         
         \Cart::clear();
 
-        return view('home');
+        return redirect()->route('home');
     }
 }

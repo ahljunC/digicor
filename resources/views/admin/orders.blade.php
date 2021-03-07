@@ -23,21 +23,21 @@
     </div>
 
     <table class="table mt-3">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Order Number</th>
-                    <th>User Id</th>
-                    <th>Status</th>
-                    <th>Shipping Name</th>
-                    <th>Item Count</th>
-                    <th>Total</th>
-                    <th>Created At</th>
-                    <th>Last Updated</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($orders as $order)
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Order Number</th>
+                <th>User Id</th>
+                <th>Status</th>
+                <th>Shipping Name</th>
+                <th>Item Count</th>
+                <th>Total</th>
+                <th>Created At</th>
+                <th>Last Updated</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($orders as $order)
                 <tr>
                     <td scope="row">{{ $order->id }}</td>
                     <td>{{ $order->order_number }}</td>
@@ -48,9 +48,15 @@
                     <td>{{ $order->created_at }}</td>
                     <td>{{ $order->updated_at }}</td>
                 </tr>
-                @endforeach
-            </tbody>
-        </table>
+            @endforeach
+        </tbody>
+    </table>
+
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center mt-5">
+            {{ $orders->links('pagination::bootstrap-4') }}
+        </div>
+    </div>
 
 </div>
 @endsection

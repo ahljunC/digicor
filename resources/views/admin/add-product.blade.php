@@ -5,7 +5,7 @@
     <h2>Add Product</h2>
 
     <div class="card-body">
-        <form method="POST" action="{{ route('admin.saveProduct') }}">
+        <form method="POST" action="{{ route('product.store') }}">
             @csrf
 
             <div class="form-group row">
@@ -41,6 +41,7 @@
 
                 <div class="col-md-6">
                     <select id=categories name="categories" class="form-control">
+                        <option value=""></option>
                        @foreach ($categories as $category)
                             <option value="{{ $category }}">{{ $category->name }}</option>
                        @endforeach

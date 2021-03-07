@@ -24,24 +24,26 @@
     </div>
 
     <table class="table mt-3">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Company Name</th>
-                    <th>Company Address</th>
-                    <th>Region</th>
-                    <th>Email</th>
-                    <th>Created At</th>
-                    <th>Last Updated</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($users as $user)
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Company Name</th>
+                <th>Company Address</th>
+                <th>Region</th>
+                <th>Email</th>
+                <th>Created At</th>
+                <th>Last Updated</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($users as $user)
                 <tr>
                     <td scope="row">{{ $user->id }}</td>
                     <td>
-                        <a href="{{ route('admin.editUser', $user->id) }}">{{ $user->name }}</a>
+                        <a href="{{ route('admin.editUser', $user->id) }}">
+                            {{ $user->name }}
+                        </a>
                     </td>
                     <td>{{ $user->company_name }}</td>
                     <td>{{ $user->company_address }}</td>
@@ -50,9 +52,15 @@
                     <td>{{ $user->created_at }}</td>
                     <td>{{ $user->updated_at }}</td>
                 </tr>
-                @endforeach
-            </tbody>
-        </table>
+            @endforeach
+        </tbody>
+    </table>
+
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center mt-5">
+            {{ $users->links('pagination::bootstrap-4') }}
+        </div>
+    </div>
 
 </div>
 @endsection

@@ -24,43 +24,6 @@ class AdminController extends Controller
 
         return view('admin.add-product', compact('categories'));
     }
-    /**
-     * Save a new product.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
-    public function saveProduct(Request $request)
-    {
-        $request->validate([
-            'name' => 'required',
-            'slug' => 'required',
-            'categories' => 'required',
-            'description' => 'required',
-            'price' => 'required',
-        ]);
-
-        $product = new Product();
-        
-        $product->name = $request->input('name');
-        $product->slug = $request->input('slug');
-        // $product->categories = $request->input('categories');
-        $product->description = $request->input('description');
-        $product->price = $request->input('price');
-
-        $product->save();
-
-        // $product = Product::create([
-        //     'name' => $data['name'],
-        //     'slug' => $data['slug'],
-        //     'description' => $data['description'],
-        //     'price' => $data['price'],
-        // ]);
-
-
-
-        return view('admin.products');
-    }
 
     public function showOrders()
     {
@@ -78,7 +41,11 @@ class AdminController extends Controller
 
     public function editUser(User $user)
     {
-        dd($user);
         return view('admin.edit-user', compact('user'));
     }
+
+    // public function index(Product $product)
+    // {
+    //     return view('product.index', ['product' => $product]);
+    // }
 }

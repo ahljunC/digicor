@@ -5,14 +5,14 @@
         <h2>Products</h2>
         <div class="row">
             @foreach ($products as $product)
-            <div class="col-3">
+            <div class="col-3 mb-5">
                 <div class="card">
                     <img class="card-img-top" src="default_product.jpg" alt="Card image cap">
                     <div class="card-body">
                         <a href="{{ route('product.index', $product->id) }}">
-                            <h4 class="card-title">{{ $product->name }}</h4>
+                            <h4 class="card-title">{{ \Illuminate\Support\Str::limit($product->name, 18, '...') }}</h4>
                         </a>
-                        <p class="card-text">{{ $product->description }}</p>
+                        <p class="card-text">{{ \Illuminate\Support\Str::limit($product->description, 200, ' (...)') }}</p>
                         <h4>{{ "$$product->price" }}</h4>
                     </div>
                     <div class="card-body">

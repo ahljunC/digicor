@@ -24,27 +24,37 @@
     </div>
 
     <table class="table mt-3">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Created At</th>
-                    <th>Last Updated</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($products as $product)
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Created At</th>
+                <th>Last Updated</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($products as $product)
                 <tr>
                     <td scope="row">{{ $product->id }}</td>
-                    <td>{{ $product->name }}</td>
+                    <td>
+                        <a href="{{ route('product.index', $product->id) }}">
+                            {{ $product->name }}
+                        </a>
+                    </td>
                     <td>{{ "$$product->price" }}</td>
                     <td>{{ $product->created_at }}</td>
                     <td>{{ $product->updated_at }}</td>
                 </tr>
-                @endforeach
-            </tbody>
-        </table>
+            @endforeach
+        </tbody>
+    </table>
+
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center mt-5">
+            {{ $products->links('pagination::bootstrap-4') }}
+        </div>
+    </div>
 
 </div>
 @endsection

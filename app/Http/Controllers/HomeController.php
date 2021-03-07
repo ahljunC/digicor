@@ -21,7 +21,7 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::paginate(8);
-        // $products = Product::whereHas()
+        // $products = Product::with('')
 
         return view('home', compact('products'));
     }
